@@ -49,6 +49,50 @@ def good_opinion(opinion):
     if opinion >= 70 and opinion <= 100:
         return float(1)
 
+# Chance of Aprobal member function 
+
+def very_bad_chance(chance):
+    if chance < 20:
+        return float(1)
+    if chance >= 20 and chance < 40:
+        return float((-1/20)*chance + 2)
+    if chance >= 40 and chance <= 100:
+        return float(0)
+def bad_chance(chance):
+    if chance < 40:
+        return float(1)
+    if chance >= 40 and chance < 60:
+        return float((-1/20)*chance + 3)
+    if chance >= 60 and chance <= 100:
+        return float(0)
+def regular_chance(chance):
+    if chance < 20:
+        return float(0)
+    if chance >= 20 and chance < 40:
+        return float((1/20)*chance - 1)
+    if chance >= 40 and chance <= 60:
+        return float(1)
+    if chance >= 60 and chance <= 80:
+        return float((-1/20)*chance + 4)
+    if chance >= 80 and chance <= 100:
+        return float(0)
+def good_chance(chance):
+    if chance < 40:
+        return float(0)
+    if chance >= 40 and chance < 60:
+        return float((1/20)*chance - 2)
+    if chance >= 60 and chance <= 100:
+        return float(1)
+def very_good_chance(chance):
+    if chance < 60:
+        return float(0)
+    if chance >= 60 and chance < 80:
+        return float((1/20)*chance - 3)
+    if chance >= 80 and chance <= 100:
+        return float(1)
+
+# fuzzify methods
+
 def fuzzify_grades(raw_grades:list)->list:
     results = []
     for gr in raw_grades:
@@ -67,18 +111,20 @@ def fuzzify_opinion(opinion):
 
 
 
-
-
-# opinions = np.arange(0,100,0.5)
+# chances = np.arange(0,100,0.5)
 # grades = np.arange(0,5,0.15)
 
-# b_opinions = []
-# r_opinions = []
-# g_opinions = []
-# for op in opinions:
-#     b_opinions.append(bad_opinion(op))
-#     r_opinions.append(regular_opinion(op))
-#     g_opinions.append(good_opinion(op))
+# vb_chances = []
+# b_chances = []
+# r_chances = []
+# g_chances = []
+# vg_chances = []
+# for op in chances:
+#     vb_chances.append(very_bad_chance(op))
+#     b_chances.append(bad_chance(op))
+#     r_chances.append(regular_chance(op))
+#     g_chances.append(good_chance(op))
+#     vg_chances.append(very_good_chance(op))
 
 # b_grades = []
 # r_grades = []
@@ -88,6 +134,6 @@ def fuzzify_opinion(opinion):
 #     r_grades.append(regular_grade(gr))
 #     g_grades.append(good_grade(gr))
 
-# plt.plot(opinions, b_opinions, opinions, r_opinions, opinions, g_opinions)
+# plt.plot(chances, vb_chances, chances, b_chances, chances, r_chances, chances, g_chances, chances, vg_chances)
 # plt.plot(grades, b_grades, grades, r_grades, grades, g_grades)
 # plt.show()
