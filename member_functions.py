@@ -10,7 +10,6 @@ def bad_grade(grade):
         return float((-1/2)*grade + 2)
     if grade >= 4 and grade <= 5:
         return float(0)
-
 def regular_grade(grade):
     if grade < 2:
         return float((1/2)*grade)
@@ -18,7 +17,6 @@ def regular_grade(grade):
         return float(1)
     if grade >= 4 and grade <= 5:
         return float(-1*grade + 5)
-
 def good_grade(grade):
     if grade < 2:
         return float(0)
@@ -26,7 +24,6 @@ def good_grade(grade):
         return float((1/2)*grade - 1)
     if grade >= 4 and grade <= 5:
         return float(1)
-
 
 # Professor's opinion member function
 
@@ -37,7 +34,6 @@ def bad_opinion(opinion):
         return float((-1/40)*opinion + (7/4))
     if opinion >= 70 and opinion <= 100:
         return float(0)
-
 def regular_opinion(opinion):
     if opinion < 30:
         return float((1/30)*opinion)
@@ -45,7 +41,6 @@ def regular_opinion(opinion):
         return float(1)
     if opinion >= 70 and opinion <= 100:
         return float((-1/30)*opinion + (10/3))
-
 def good_opinion(opinion):
     if opinion < 30:
         return float(0)
@@ -53,6 +48,25 @@ def good_opinion(opinion):
         return float((1/40)*opinion - (3/4))
     if opinion >= 70 and opinion <= 100:
         return float(1)
+
+def fuzzify_grades(raw_grades:list)->list:
+    results = []
+    for gr in raw_grades:
+        results += [fuzzify_grade(gr)]
+    return results
+def fuzzify_opinions(raw_opinions:list)->list:
+    results = []
+    for op in raw_opinions:
+        results += [fuzzify_opinion(op)]
+    return results
+
+def fuzzify_grade(grade):
+    return {"bad":bad_grade(grade),"regular":regular_grade(grade),"good":good_grade(grade)}
+def fuzzify_opinion(opinion):
+    return {"bad":bad_opinion(opinion),"regular":regular_opinion(opinion),"good":good_opinion(opinion)}
+
+
+
 
 
 # opinions = np.arange(0,100,0.5)
