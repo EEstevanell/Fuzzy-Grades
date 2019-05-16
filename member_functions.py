@@ -52,29 +52,29 @@ def good_opinion(opinion):
 # Chance of Aprobal member function 
 
 def very_bad_chance(chance):
-    if chance < 20:
+    if chance < 16:
         return float(1)
-    if chance >= 20 and chance < 40:
-        return float((-1/20)*chance + 2)
-    if chance >= 40 and chance <= 100:
+    if chance >= 16 and chance < 36:
+        return float((-1/20)*chance + (36/20))
+    if chance >= 36 and chance <= 100:
         return float(0)
 def bad_chance(chance):
-    if chance < 40:
+    if chance < 38:
         return float(1)
-    if chance >= 40 and chance < 60:
-        return float((-1/20)*chance + 3)
-    if chance >= 60 and chance <= 100:
+    if chance >= 38 and chance < 55:
+        return float((-1/17)*chance + (55/17))
+    if chance >= 55 and chance <= 100:
         return float(0)
 def regular_chance(chance):
-    if chance < 20:
+    if chance < 23:
         return float(0)
-    if chance >= 20 and chance < 40:
-        return float((1/20)*chance - 1)
-    if chance >= 40 and chance <= 60:
+    if chance >= 23 and chance < 45:
+        return float((1/22)*chance - (23/22))
+    if chance >= 45 and chance <= 55:
         return float(1)
-    if chance >= 60 and chance <= 80:
-        return float((-1/20)*chance + 4)
-    if chance >= 80 and chance <= 100:
+    if chance >= 55 and chance <= 77:
+        return float((-1/22)*chance + (77/22))
+    if chance >= 77 and chance <= 100:
         return float(0)
 def good_chance(chance):
     if chance < 40:
@@ -90,6 +90,13 @@ def very_good_chance(chance):
         return float((1/20)*chance - 3)
     if chance >= 80 and chance <= 100:
         return float(1)
+
+def eval_chances_func(chance):
+    return (very_good_chance(chance),
+            good_chance(chance),
+            regular_chance(chance),
+            bad_chance(chance),
+            very_bad_chance(chance))
 
 # fuzzify methods
 
