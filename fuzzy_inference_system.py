@@ -2,6 +2,7 @@ import member_functions as mf
 import defuzzifiers as dz
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 import random
 
 class FuzzyInferenceSystem:
@@ -154,21 +155,55 @@ class FuzzyInferenceSystem:
     def scalate(self, coeficient, consecuent, chance):
         return coeficient*consecuent(chance)
 
-student = (random.uniform(0,5), random.uniform(0,100))
-print("student %s" %str(student))
-a = FuzzyInferenceSystem()
-agregation_func = a.run_mamdani(student, True)
+# student = (random.uniform(0,5), random.uniform(0,100))
+# print("student %s" %str(student))
+# a = FuzzyInferenceSystem()
+# agregation_func = a.run_mamdani(student, True)
 
-chances = np.arange(0, 100, 0.5)
-ys = [agregation_func(ch) for ch in chances]
-plt.plot(chances, ys)
-plt.title("Union Mamdani")
-plt.show()
+# chances = np.arange(0, 100, 0.5)
+# ys = [agregation_func(ch) for ch in chances]
+# plt.plot(chances, ys)
+# plt.title("Union Mamdani")
+# plt.show()
 
-agregation_func = a.run_larsen(student, True)
+# agregation_func = a.run_larsen(student, True)
 
-chances = np.arange(0, 100, 0.5)
-ys = [agregation_func(ch) for ch in chances]
-plt.plot(chances, ys)
-plt.title("Union Larsen")
-plt.show()
+# chances = np.arange(0, 100, 0.5)
+# ys = [agregation_func(ch) for ch in chances]
+# plt.plot(chances, ys)
+# plt.title("Union Larsen")
+# plt.show()
+
+if __name__ == "__main__":
+    if len(sys.argv) > 2:
+        print("usage: python fuzzy_inference_system.py [plots]")
+        exit()
+    if len(sys.argv) > 1:
+        plott = True
+    else:
+        plott = False
+    try:
+        grade = float(input("Inserte la nota promedio del estudiante en la asignatura: escala [0,5]\n>>> "))
+    except:
+        print("el valor de la nota debe ser un numero real")
+        exit()
+
+    if  not( 0 <= grade <= 5):
+        print("La nota insertada no esta en el intervalo de valores validos")
+        exit()
+
+    try:
+        opinion = float(input("Inserte la opinion del claustro de profesores de la asignatura: escala [0,100]\n>>> "))
+    except:
+        print("el valor de la opinion debe ser un numero real")
+        exit()
+
+
+    if  not( 0 <= opinion <= 100):
+        print("La opinion insertada no esta en el intervalo de valores validos")
+        exit()
+
+    f_system = FuzzyInferenceSystem()
+    student = (grade, opinion)
+    f_system.run_mamdani(student, plott)
+    f_system.run_larsen(student, plott)
