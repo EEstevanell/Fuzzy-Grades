@@ -7,13 +7,13 @@ import random
 
 class FuzzyInferenceSystem:
     def __init__(self):
-        self.rules = [("very good aproval chance","gg","go"),
-                      ("good aproval chance","gg"),
-                      ("good aproval chance","rg","go"),
-                      ("regular aproval chance","rg","ro"),
-                      ("bad aproval chance","rg","bo"),
-                      ("bad aproval chance","bg"),
-                      ("very bad aproval chance","bg","bo"),]
+        self.rules = [("very good approval chance","gg","go"),
+                      ("good approval chance","gg"),
+                      ("good approval chance","rg","go"),
+                      ("regular approval chance","rg","ro"),
+                      ("bad approval chance","rg","bo"),
+                      ("bad approval chance","bg"),
+                      ("very bad approval chance","bg","bo"),]
 
     def fuzzify(self, student):
         """
@@ -68,11 +68,11 @@ class FuzzyInferenceSystem:
     ##### Mamdani #####
     def plot_mamdani_agregation(self):
         print("Plotting Mamdani Agregation")
-        vb_coef = self.coeficient["very bad aproval chance"]
-        b_coef = self.coeficient["bad aproval chance"]
-        r_coef = self.coeficient["regular aproval chance"]
-        g_coef = self.coeficient["good aproval chance"]
-        vg_coef = self.coeficient["very good aproval chance"]
+        vb_coef = self.coeficient["very bad approval chance"]
+        b_coef = self.coeficient["bad approval chance"]
+        r_coef = self.coeficient["regular approval chance"]
+        g_coef = self.coeficient["good approval chance"]
+        vg_coef = self.coeficient["very good approval chance"]
 
         xs = np.arange(0, 100, 0.5)
 
@@ -97,11 +97,11 @@ class FuzzyInferenceSystem:
         plt.show()
         print("coeficient vals: %s, %s, %s, %s, %s" %(vb_coef, b_coef, r_coef, g_coef, vg_coef))
     def mamdani_agregation(self, chance):
-        vb_coef = self.coeficient["very bad aproval chance"]
-        b_coef = self.coeficient["bad aproval chance"]
-        r_coef = self.coeficient["regular aproval chance"]
-        g_coef = self.coeficient["good aproval chance"]
-        vg_coef = self.coeficient["very good aproval chance"]
+        vb_coef = self.coeficient["very bad approval chance"]
+        b_coef = self.coeficient["bad approval chance"]
+        r_coef = self.coeficient["regular approval chance"]
+        g_coef = self.coeficient["good approval chance"]
+        vg_coef = self.coeficient["very good approval chance"]
         return max([self.clipping(vb_coef,mf.very_bad_chance,chance),
                     self.clipping(b_coef,mf.bad_chance,chance),
                     self.clipping(r_coef,mf.regular_chance,chance),
@@ -113,11 +113,11 @@ class FuzzyInferenceSystem:
     ##### Larsen #####
     def plot_larsen_agregation(self):
         print("Plotting Larsen Agregation")
-        vb_coef = self.coeficient["very bad aproval chance"]
-        b_coef = self.coeficient["bad aproval chance"]
-        r_coef = self.coeficient["regular aproval chance"]
-        g_coef = self.coeficient["good aproval chance"]
-        vg_coef = self.coeficient["very good aproval chance"]
+        vb_coef = self.coeficient["very bad approval chance"]
+        b_coef = self.coeficient["bad approval chance"]
+        r_coef = self.coeficient["regular approval chance"]
+        g_coef = self.coeficient["good approval chance"]
+        vg_coef = self.coeficient["very good approval chance"]
 
         xs = np.arange(0, 100, 0.5)
 
@@ -142,11 +142,11 @@ class FuzzyInferenceSystem:
         plt.show()
         print("coeficient vals: %s, %s, %s, %s, %s" %(vb_coef, b_coef, r_coef, g_coef, vg_coef))
     def larsen_agregation(self, chance):
-        vb_coef = self.coeficient["very bad aproval chance"]
-        b_coef = self.coeficient["bad aproval chance"]
-        r_coef = self.coeficient["regular aproval chance"]
-        g_coef = self.coeficient["good aproval chance"]
-        vg_coef = self.coeficient["very good aproval chance"]
+        vb_coef = self.coeficient["very bad approval chance"]
+        b_coef = self.coeficient["bad approval chance"]
+        r_coef = self.coeficient["regular approval chance"]
+        g_coef = self.coeficient["good approval chance"]
+        vg_coef = self.coeficient["very good approval chance"]
         return max([self.scalate(vb_coef, mf.very_bad_chance, chance),
                     self.scalate(b_coef, mf.bad_chance, chance),
                     self.scalate(r_coef, mf.regular_chance, chance),
@@ -191,7 +191,7 @@ if __name__ == "__main__":
     if  not( 0 <= grade <= 5):
         print("La nota insertada no esta en el intervalo de valores validos")
         exit()
-        
+
     try:
         opinion = float(input("Inserte la opinion del claustro de profesores de la asignatura: escala [0,100]\n>>> "))
     except:
