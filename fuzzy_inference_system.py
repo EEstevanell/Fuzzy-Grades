@@ -191,7 +191,7 @@ if __name__ == "__main__":
     if  not( 0 <= grade <= 5):
         print("La nota insertada no esta en el intervalo de valores validos")
         exit()
-
+        
     try:
         opinion = float(input("Inserte la opinion del claustro de profesores de la asignatura: escala [0,100]\n>>> "))
     except:
